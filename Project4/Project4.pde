@@ -3,7 +3,7 @@
 
 void setup()
 {
-  size(600,600); //by ben
+  size(600,600); //by ben && Jason
 
 }
 
