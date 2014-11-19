@@ -21,16 +21,19 @@ void draw()
 {
 }
 
-/*void drawCloud()
+void drawCloud()
 {
   pushMatrix();
   translate(300,200);
   noStroke();
-  fill(150);
+  fill(175);
   ellipse(-100,0, 200,200); // leftmost
-  ellipse(-75,-75, 150,150); // left upper
-  //ellipse(25,-50,100,100);
-  */
+  ellipse(-30,-90, 150,150); // left upper
+  ellipse(60,-55,125,125);
+  ellipse(115,12.5,175,175);
+  rect(-100,0,200,100);
+  rect(-10,-50,50,50);
+  
   
   
 
