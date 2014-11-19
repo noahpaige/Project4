@@ -5,16 +5,37 @@
  * Must Tell a Story w/ beginning, middle, && end
  * Story must be interesting
  */
-
+PShape s;
 
 void setup()
 {
   size(600, 400);
-  drawGridlines(); // draws 100px x 100px grid lines 
+  smooth();
+  drawGridlines(); // draws 100px x 100px grid lines
+  drawCloud();
+  
+ 
 }
 
 void draw()
 {
+}
+
+/*void drawCloud()
+{
+  pushMatrix();
+  translate(300,200);
+  noStroke();
+  fill(150);
+  ellipse(-100,0, 200,200); // leftmost
+  ellipse(-75,-75, 150,150); // left upper
+  //ellipse(25,-50,100,100);
+  */
+  
+  
+
+
+  popMatrix();
 }
 
 void drawGridlines()
