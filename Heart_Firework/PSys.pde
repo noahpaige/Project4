@@ -11,7 +11,7 @@ class PSys
    {
       particles = new ArrayList();
       source = init_loc.get();  // you have to do this to set a vector equal to another vector
-      shade = color(random(255),random(255),random(255));  // TODO_2 use this!
+      shade = color(random(255),random(255),random(255));  
       for (int i=0; i < num; i++) 
       {
          particles.add(new Particle(source,shade));
