@@ -1,5 +1,4 @@
-// now define a group of particles as a particleSys
-class PSys
+class FWsystem
 {
   
    ArrayList particles; // all the particles
@@ -7,14 +6,14 @@ class PSys
    color shade; // their main color
   
    // constructor
-   PSys(int num, PVector init_loc) 
+   FWsystem(int num, PVector init_loc) 
    {
       particles = new ArrayList();
       source = init_loc.get();  // you have to do this to set a vector equal to another vector
-      shade = color(random(255),random(255),random(255));  
+      shade = color(random(100,255),random(100,255),random(100,255));  // TODO_2 use this!
       for (int i=0; i < num; i++) 
       {
-         particles.add(new Particle(source,shade));
+         particles.add(new FWparticle(source,shade));
       }
    }
     
@@ -24,7 +23,7 @@ class PSys
       // go through backwards for deletes
       for (int i=particles.size()-1; i >=0; i--) 
       {
-         Particle p = (Particle)particles.get(i);
+         FWparticle p = (FWparticle)particles.get(i);
           
          // update each particle per frame
          p.run();
@@ -50,4 +49,3 @@ class PSys
       }
    }
 }
-

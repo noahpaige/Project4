@@ -12,7 +12,7 @@ class PSys
     source = init_loc;  // you have to do this to set a vector equal to another vector
     for (int i=0; i < num; i++) 
     {
-      particles.add(new Particle(source));
+      particles.add(new FountainParticle(source));
     }
   }
 
@@ -22,7 +22,7 @@ class PSys
     // go through backwards for deletes
     for (int i=particles.size ()-1; i >=0; i--) 
     {
-      Particle p = (Particle)particles.get(i);
+      FountainParticle p = (FountainParticle)particles.get(i);
 
       // update each particle per frame
       p.run();
@@ -38,7 +38,7 @@ class PSys
   }
    void addParticle()
    {
-   particles.add(new Particle(new PVector(random(source.x-10,source.x+10),(random(source.y-3,source.y+3)))));
+   particles.add(new FountainParticle(new PVector(random(source.x-10,source.x+10),(random(source.y-3,source.y+3)))));
    }
  
   boolean dead() 

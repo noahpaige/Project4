@@ -1,5 +1,5 @@
 // define a particle
-class Particle 
+class HeartFWParticle 
 {
    PVector loc;
    PVector vel;
@@ -9,7 +9,7 @@ class Particle
    color pcolor;
   
    // constructor
-   Particle(PVector start,color myColor) 
+   HeartFWParticle(PVector start,color myColor) 
    {
       vel = PVector.fromAngle(random(2*PI));
       vel.setMag(random(2,3));

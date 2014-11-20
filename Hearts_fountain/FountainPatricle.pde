@@ -1,5 +1,5 @@
 // define a particle
-class Particle 
+class FountainParticle 
 {
   PVector loc;
   PVector vel;
@@ -7,7 +7,7 @@ class Particle
   float life;
 
   // constructor
-  Particle(PVector start) 
+  FountainParticle(PVector start) 
   {
     vel = PVector.fromAngle(random(-3*PI/5, -2*PI/5));
     vel.setMag(random(.8,1.2));
