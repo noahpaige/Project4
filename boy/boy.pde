@@ -39,7 +39,7 @@ void draw()
   
   if(animateOn)
   {
-    animate();
+    animateBoy();
   }
 }
 
@@ -179,7 +179,7 @@ void drawBoy_happy()
 popMatrix();
 }
 
-void animate()
+void animateBoy()
 {
   // update the girl's global location
   Bloc.x = Bloc.x + Bdir.x*speed;

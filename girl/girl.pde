@@ -26,7 +26,7 @@ void draw()
   
   if(animateOn)
   {
-    animate();
+    animateGirl();
   }
 }
 
@@ -129,7 +129,7 @@ void drawGirl()
 popMatrix();
 }
 
-void animate()
+void animateGirl()
 {
   // update the girl's global location
   Gloc.x = Gloc.x + Gdir.x*speed;
