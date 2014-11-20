@@ -1,16 +1,17 @@
 HappyFace myHappyFace;
 SadFace mySadFace;
 ShirtDesign myShirtDesign;
-float dogx = 0;
-float dogy = 0;
+
+PVector bLoc;
 void setup()
 {
+  bLoc = new PVector(325,200);
   size(450,450);
   background(#93A6FF);
 
-  myHappyFace = new HappyFace(325,200);
-  mySadFace = new SadFace(325,200);
-  myShirtDesign = new ShirtDesign(385,50);
+  myHappyFace = new HappyFace(bLoc.x,bLoc.y);
+  mySadFace = new SadFace(bLoc.x,bLoc.y);
+  myShirtDesign = new ShirtDesign(bLoc.x+60,bLoc.y);
 }
 
 void draw()
@@ -33,14 +34,20 @@ void draw()
 class HappyFace
 {
   //Global Variables
-  float x = 0;
-  float y = 0;
+  float x = PI/6;
+  float y = -PI/6;
+  float leftLegR, rightLegR;
+  boolean leftLegRight = false;
+  boolean rightLegRight = false;
 
-  //Contructor
+ 
+
+  //Constructor
   HappyFace(float _x, float _y)
   {
     x = _x;
     y = _y;
+    leftLegR = rightLegR = 0;
   }
 
   //Functions
@@ -107,8 +114,24 @@ class HappyFace
     //Legs
     fill(#475BDB);
     rect(50, 131, 30, 20);
-    rect(50, 151, 12, 40);    
-    rect(68, 151, 12, 40);
+    
+    //translate the legs for rotating
+   
+    //left leg
+    pushMatrix();
+    translate(50, 131);
+    rotate(leftLegR);
+    translate(6,0);
+    rect(-6,0, 12, 60);    
+    popMatrix();
+    
+    //right leg
+    pushMatrix();
+    translate(68, 131);
+    rotate(rightLegR);
+    translate(6,0);
+    rect(-6, 0, 12, 60);
+    popMatrix();
 
     //shoes
     fill(20);
@@ -119,6 +142,43 @@ class HappyFace
     fill(#D8BC9D);
     rect(22,60,10,8);
     rect(97,60,10,8);
+
+    if (leftLegRight)
+    {
+      legLR -= .03;
+    }
+    else 
+    {
+      legLR += .03;
+    }
+    if (leftLegRight)
+    {
+      legLR -= .03;
+    }
+    else 
+    {
+      legLR += .03;
+    }
+    
+    if (legLR < -PI/5)
+    {
+      leftLegRight = false;
+    } 
+    else if (legLR > PI/5)
+    {
+      leftLegRight = true;
+    }
+    
+    if (legRR < -PI/5)
+    {
+      rightLegRight = false;
+    } 
+    else if (legRR > PI/5)
+    {
+      rightLegRight = true;
+    }
+
+      
 
     
   }
@@ -187,8 +247,8 @@ class SadFace
     //Legs
     fill(#475BDB);
     rect(50, 131, 30, 20);
-    rect(50, 151, 12, 40);    
-    rect(68, 151, 12, 40);
+    rect(50, 131, 12, 60);    
+    rect(68, 131, 12, 60);
 
     //shoes
     fill(20);
