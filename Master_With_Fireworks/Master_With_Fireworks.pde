@@ -12,7 +12,11 @@ boolean BlegL_right = true;
 boolean BlegR_right = false;
 boolean happy = false;
 boolean animateOn = false;
- 
+
+//For Fireworks
+FWsystem fireW1,fireW2,fireW3;
+color sysColor;
+
 void setup() 
 {
   size(600, 400);
@@ -35,16 +39,30 @@ void setup()
   fill(150);
   smooth();
   particles = new ArrayList();
+  
+  //Particle systems for each firework
+  fireW1 = new FWsystem(50, new PVector(random(20, width*.33), random(height*.3)));
+  fireW2 = new FWsystem(50, new PVector(random(width*.33, width*.66), random(height*.3)));
+  fireW3 = new FWsystem(50, new PVector(random(width*.66, width-20), random(height*.3)));
 }
  
 void draw() 
 {
   background(60,160,230);
   
+  fireW1.run();  
+  fireW2.run();
+  fireW3.run();
+  
+  if (fireW1.dead())
+  {
+    fireW1 = new FWsystem(50, new PVector(random(20, width*.33), random(height*.3)));
+    fireW2 = new FWsystem(50, new PVector(random(width*.33, width*.66), random(height*.3)));
+    fireW3 = new FWsystem(50, new PVector(random(width*.66, width-20), random(height*.3)));
+  }
+  
   fill(125,200,0);
   rect(0,height*.66,width,height/2);
-  
-  
   
   particles.add(new Particle(new PVector(x,50)));
   for (int i = particles.size()-1; i >= 0; i--) 
