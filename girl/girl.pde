@@ -1,33 +1,40 @@
 PVector Gloc;
-PVector dir;
-float legL,legR;
+PVector Gdir;
+float G_legL,G_legR;
 float speed;
 
-boolean legL_right = true;
-boolean legR_right = false;
+boolean GlegL_right = true;
+boolean GlegR_right = false;
 boolean animateOn = false;
 
 
 void setup()
 {
-size(400,400);
-Gloc = new PVector(width/2,height/2);
-dir = new PVector(-1,0);
-legL=0;
-legR=0;
-speed = 0.5;
+  size(400,400);
+  Gloc = new PVector(width*.9,height/2);
+  Gdir = new PVector(-1,0);
+  G_legL=0;
+  G_legR=0;
+  speed = 1;
 }
 
 void draw()
 {  
   background(128);
+  
   drawGirl();
-  animate();
+  
+  if(animateOn)
+  {
+    animate();
+  }
 }
 
 void mousePressed()
 {
   Gloc.x = width*.9;
+  G_legL=0;
+  G_legR=0;
   animateOn = !animateOn;
 }
 
@@ -69,27 +76,26 @@ void drawGirl()
         rect(-22.5,-15,7,32);
         rect(15,15,8,8);
         rect(-23,15,8,8);
-      rectMode(CENTER);
       //LEGS
       fill(#3D5493);//navy blue
-      rect(0,32.5,28,15);
+      rect(-14,25,28,11);
     
       //LEFT LEG-----------
       pushMatrix();
         translate(-8,32.5);
-        rotate(legL);
+        rotate(G_legL);
         quad(-6.1,0,6,0,2,45,-4,45);
         fill(20);
-        rect(-4,45,16,6,6);
+        rect(-4,45,10,6,6);
       popMatrix();
       //RIGHT LEG----------
       pushMatrix();
         translate(8,32.5);
-        rotate(legR);
+        rotate(G_legR);
         fill(#3D5493);
         quad(-6,0,6.1,0,2,45,-4,45);
         fill(20);
-        rect(-4,45,16,6,6);
+        rect(-4,45,10,6,6);
       popMatrix();
       
       //HAIR part 2
@@ -126,42 +132,42 @@ popMatrix();
 void animate()
 {
   // update the girl's global location
-  Gloc.x = Gloc.x + dir.x*speed;
-  Gloc.y = Gloc.y + dir.y*speed;
+  Gloc.x = Gloc.x + Gdir.x*speed;
+  Gloc.y = Gloc.y + Gdir.y*speed;
   
   // LegR
-  if (legR < -.75)
+  if (G_legR < -.75)
   {
-    legR_right = true;
+    GlegR_right = true;
   }
-  else if (legR > .4)
+  else if (G_legR > .4)
   {
-     legR_right = false;
+     GlegR_right = false;
   } 
-  if(legR_right)
+  if(GlegR_right)
   {
-    legR += .04;
+    G_legR += .04;
   }
   else
   {
-    legR -= .04;
+    G_legR -= .04;
   }
   
   // LegL
-  if (legL < -.4)
+  if (G_legL < -.4)
   {
-    legL_right = true;
+    GlegL_right = true;
   }
-  else if (legL > .75)
+  else if (G_legL > .75)
   {
-    legL_right = false;
+    GlegL_right = false;
   } 
-  if(legL_right)
+  if(GlegL_right)
   {
-    legL += .04;
+    G_legL += .04;
   }
   else
   {
-    legL -= .04;
+    G_legL -= .04;
   }
 }
