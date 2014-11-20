@@ -21,7 +21,7 @@ class Particle {
     fill(#81CDFF, trans);
     stroke(0, 0, 200, trans);
     //ellipse(location.x, location.y, 10, 10);// CHANGE RAIN DEOPPLET
-    drawRainDrop(location.x,location.y);
+    drawRainDrop(location.x, location.y);
     if (age > LIFESPAN) 
     {
       return false;
@@ -35,13 +35,15 @@ class Particle {
   {
     pushMatrix();
     translate(cx, cy);
-      beginShape();
+    beginShape();
     curveVertex(cx, cy-10);
     curveVertex(cx+1, cy-8);
     curveVertex(cx+2, cy-5);
     curveVertex(cx+3, cy-3);
     curveVertex(cx+2, cy-2);
+    curveVertex(cx+1, cy-1);
     curveVertex(cx, cy);
+    curveVertex(cx-1, cy-1);
     curveVertex(cx-2, cy-2);
     curveVertex(cx-3, cy-3);
     curveVertex(cx-2, cy-5);
